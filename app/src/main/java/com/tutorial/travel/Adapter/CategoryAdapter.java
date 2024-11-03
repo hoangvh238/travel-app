@@ -13,13 +13,13 @@ import com.bumptech.glide.Glide;
 import com.tutorial.travel.Domain.CategoryDomain;
 import com.tutorial.travel.R;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder>{
 
-    ArrayList<CategoryDomain> items;
+    List<CategoryDomain> items;
 
-    public CategoryAdapter(ArrayList<CategoryDomain> items) {
+    public CategoryAdapter(List<CategoryDomain> items) {
         this.items = items;
     }
 
@@ -45,8 +45,6 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         Glide.with(holder.itemView.getContext())
                 .load(drawableResourceId)
                 .into(holder.picImg);
-
-
     }
 
     @Override

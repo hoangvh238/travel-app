@@ -9,20 +9,27 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.tutorial.travel.Adapter.CategoryAdapter;
 import com.tutorial.travel.Adapter.PopularAdapter;
+import com.tutorial.travel.DAOs.PopularCategoryDAO;
+import com.tutorial.travel.DAOs.PopularDAO;
+import com.tutorial.travel.Database.AppDatabase;
 import com.tutorial.travel.Domain.CategoryDomain;
 import com.tutorial.travel.Domain.PopularDomain;
 import com.tutorial.travel.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
+    private PopularDAO popularDAO;
+    private PopularCategoryDAO categoryDao;
     private RecyclerView.Adapter adapterPopular, adapterCat;
     private RecyclerView recyclerViewPopular, recyclerViewCategory;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        categoryDao = AppDatabase.getInstance(this).categoryDAO();
 
         initRecyclerView();
     }
@@ -32,9 +39,8 @@ public class MainActivity extends AppCompatActivity {
         // For Popular RecyclerView
         ArrayList<PopularDomain> items = new ArrayList<>();
         String str = getString(R.string.description);
-        items.add(new PopularDomain("Mar caible avendia lago", "Miami Beach", str , 2, true, 4.9,"pic1", true, 1000));
-        items.add(new PopularDomain("Passo Rolle, TN", "Hawaii Beach", str, 2, false, 5.0,"pic2", false, 2500));
-        items.add(new PopularDomain("Mar caible avendia lago", "Miami Beach", str, 2, true, 4.3,"pic3", true, 30000));
+        items.add(new PopularDomain("Miami Beach", "United State", "Mar caible avendia lago", "Mar caible avendia lago", "pic1"));
+        items.add(new PopularDomain("Hawaii Beach", "United State", "Passo Rolle, TN", "Passo Rolle, TN", "pic2"));
 
         recyclerViewPopular = findViewById(R.id.recyclerview1);
         recyclerViewPopular.setLayoutManager(new LinearLayoutManager(
@@ -46,13 +52,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewPopular.setAdapter(adapterPopular);
 
         // For Category RecyclerView
-        ArrayList<CategoryDomain> catsList = new ArrayList<>();
-        catsList.add(new CategoryDomain("Beaches", "cat1"));
-        catsList.add(new CategoryDomain("Camps", "cat2"));
-        catsList.add(new CategoryDomain("Forest", "cat3"));
-        catsList.add(new CategoryDomain("Desert", "cat4"));
-        catsList.add(new CategoryDomain("Mountain", "cat5"));
-
+        List<CategoryDomain> catsList = categoryDao.getAllCategories();
         recyclerViewCategory = findViewById(R.id.recyclerview2);
         recyclerViewCategory.setLayoutManager(new LinearLayoutManager(
                 this,

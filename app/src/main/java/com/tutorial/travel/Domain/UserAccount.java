@@ -1,11 +1,11 @@
-package com.tutorial.travel.Entity;
+package com.tutorial.travel.Domain;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "users")
-public class User {
+@Entity(tableName = "userAccounts")
+public class UserAccount {
     @PrimaryKey
     @NonNull
     private String id;
@@ -13,13 +13,15 @@ public class User {
     private String password;
     private String fullName;
     private String phoneNumber;
+    private String role;
 
-    public User(@NonNull String id, String username, String password, String fullName, String phoneNumber) {
+    public UserAccount(@NonNull String id, String username, String password, String fullName, String phoneNumber, String role) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.fullName = fullName;
         this.phoneNumber = phoneNumber;
+        this.role = role;
     }
 
     @NonNull
@@ -61,5 +63,13 @@ public class User {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

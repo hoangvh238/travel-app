@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,7 +12,7 @@ import com.tutorial.travel.Domain.PopularDomain;
 import com.tutorial.travel.R;
 
 public class DetailActivity extends AppCompatActivity {
-    private TextView titleTxt, locationTxt, scoreTxt, bedTxt, guideTxt, wifiTxt, descriptionTxt;
+    private TextView placeNameTxt, locationTxt, shortDescriptionTxt, detailDescriptionTxt, imageUrlTxt;
     private ImageView backBtn, picImg;
     private PopularDomain item;
 
@@ -29,25 +28,12 @@ public class DetailActivity extends AppCompatActivity {
     private void setVariable() {
         item = (PopularDomain) getIntent().getSerializableExtra("object");
 
-        titleTxt.setText(item.getTitle());
+        placeNameTxt.setText(item.getPlaceName());
         locationTxt.setText(item.getLocation());
-        scoreTxt.setText(""+item.getScore());
-        bedTxt.setText(item.getBed()+" bed");
+        shortDescriptionTxt.setText(item.getShortDescription());
+        detailDescriptionTxt.setText(item.getDetailDescription());
 
-        if(item.isGuide()){
-            guideTxt.setText("Guide");
-        }else{
-            guideTxt.setText("No-Guide");
-        }
-
-        if(item.isWifi()){
-            wifiTxt.setText("Wi-Fi");
-        }else{
-            wifiTxt.setText("No Wi-Fi");
-        }
-
-
-        int drawableResourceId = getResources().getIdentifier(item.getPic(), "drawable", getPackageName());
+        int drawableResourceId = getResources().getIdentifier(item.getImageUrl(), "drawable", getPackageName());
 
         Glide.with(this)
                 .load(drawableResourceId)
@@ -60,16 +46,13 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        titleTxt = findViewById(R.id.titleTxt);
+        placeNameTxt = findViewById(R.id.titleTxt);
         locationTxt = findViewById(R.id.locationTxt);
-        scoreTxt = findViewById(R.id.scoreTxt);
-        bedTxt = findViewById(R.id.bedTxt);
-        guideTxt = findViewById(R.id.guideTxt);
-        wifiTxt = findViewById(R.id.wifiTxt);
-        descriptionTxt = findViewById(R.id.descriptionTxt);
+        shortDescriptionTxt = findViewById(R.id.scoreTxt);
+        detailDescriptionTxt = findViewById(R.id.bedTxt);
+        imageUrlTxt = findViewById(R.id.guideTxt);
 
         backBtn = findViewById(R.id.backBtn);
         picImg = findViewById(R.id.picImg);
-
     }
 }
