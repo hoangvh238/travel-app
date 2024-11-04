@@ -137,10 +137,6 @@ public class CreatePopularActivity extends AppCompatActivity {
         String category = categorySpinner.getSelectedItem().toString();
         String detailedDescription = detailedDescriptionEditText.getText().toString();
 
-<<<<<<< HEAD
-=======
-        // Add actual submission logic here (e.g., sending data to a server or saving to a database)
->>>>>>> db6d426f0bfef2641a931c9dbe92defcb49dc4cf
         if(currentImage != null) {
             imageUrl = ImageHelpers.saveImageToLocal(currentImage, this);
         }
