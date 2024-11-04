@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.tutorial.travel"
-    compileSdk = 33
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.tutorial.travel"
@@ -50,6 +50,8 @@ android {
 }
 
 dependencies {
+    implementation("androidx.room:room-runtime:2.0.0")
+    annotationProcessor("androidx.room:room-compiler:2.0.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("com.google.android.material:material:1.8.0")
     implementation("com.github.bumptech.glide:glide:4.12.0")

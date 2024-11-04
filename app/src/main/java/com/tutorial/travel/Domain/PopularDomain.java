@@ -1,37 +1,53 @@
 package com.tutorial.travel.Domain;
 
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.PrimaryKey;
+
 import java.io.Serializable;
 
+@Entity(tableName = "populars",
+        foreignKeys = @ForeignKey(
+                entity = CategoryDomain.class,
+                parentColumns = "categoryId",
+                childColumns = "categoryId",
+                onDelete = ForeignKey.NO_ACTION
+        ))
 public class PopularDomain implements Serializable {
-
-    private String title;
+    @PrimaryKey(autoGenerate = true)
+    private int id;
+    private String placeName;
     private String location;
-    private String description;
-    private int bed;
-    private boolean guide;
-    private double score;
-    private String pic;
-    private boolean wifi;
-    private int price;
+    private String shortDescription;
+    private String detailDescription;
+    private String imageUrl;
+    private int categoryId;
 
-    public PopularDomain(String title, String location, String description, int bed, boolean guide, double score, String pic, boolean wifi, int price) {
-        this.title = title;
+    public PopularDomain(String placeName, String location, String shortDescription, String detailDescription, String imageUrl, int categoryId) {
+        this.placeName = placeName;
         this.location = location;
-        this.description = description;
-        this.bed = bed;
-        this.guide = guide;
-        this.score = score;
-        this.pic = pic;
-        this.wifi = wifi;
-        this.price = price;
+        this.shortDescription = shortDescription;
+        this.detailDescription = detailDescription;
+        this.imageUrl = imageUrl;
+        this.categoryId = categoryId;
     }
 
-    public String getTitle() {
-        return title;
+    @NonNull
+    public int getId() {
+        return id;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setId(@NonNull int id) {
+        this.id = id;
+    }
+
+    public String getPlaceName() {
+        return placeName;
+    }
+
+    public void setPlaceName(String placeName) {
+        this.placeName = placeName;
     }
 
     public String getLocation() {
@@ -42,59 +58,35 @@ public class PopularDomain implements Serializable {
         this.location = location;
     }
 
-    public String getDescription() {
-        return description;
+    public String getShortDescription() {
+        return shortDescription;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setShortDescription(String shortDescription) {
+        this.shortDescription = shortDescription;
     }
 
-    public int getBed() {
-        return bed;
+    public String getDetailDescription() {
+        return detailDescription;
     }
 
-    public void setBed(int bed) {
-        this.bed = bed;
+    public void setDetailDescription(String detailDescription) {
+        this.detailDescription = detailDescription;
     }
 
-    public boolean isGuide() {
-        return guide;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setGuide(boolean guide) {
-        this.guide = guide;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
-    public double getScore() {
-        return score;
+    public int getCategoryId() {
+        return categoryId;
     }
 
-    public void setScore(double score) {
-        this.score = score;
-    }
-
-    public String getPic() {
-        return pic;
-    }
-
-    public void setPic(String pic) {
-        this.pic = pic;
-    }
-
-    public boolean isWifi() {
-        return wifi;
-    }
-
-    public void setWifi(boolean wifi) {
-        this.wifi = wifi;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 }

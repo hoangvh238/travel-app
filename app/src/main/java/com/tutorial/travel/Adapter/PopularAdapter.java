@@ -17,14 +17,13 @@ import com.tutorial.travel.Activity.DetailActivity;
 import com.tutorial.travel.Domain.PopularDomain;
 import com.tutorial.travel.R;
 
-import java.text.DecimalFormat;
-import java.util.ArrayList;
+import java.util.List;
 
 public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHolder> {
-    ArrayList<PopularDomain> items;
+    List<PopularDomain> items;
     // DecimalFormat formatter;
 
-    public PopularAdapter(ArrayList<PopularDomain> items) {
+    public PopularAdapter(List<PopularDomain> items) {
         this.items = items;
         // formatter = new DecimalFormat("###,###,###,###");
     }
@@ -42,12 +41,12 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull PopularAdapter.ViewHolder holder, int position) {
-        holder.titleTxt.setText(items.get(position).getTitle());
+        holder.placeNameTxt.setText(items.get(position).getPlaceName());
         holder.locationTxt.setText(items.get(position).getLocation());
-        holder.scoreTxt.setText(""+items.get(position).getScore());
+        holder.categoryTxt.setText(items.get(position).getCategoryId()+"");
 
         int drawableResourceId = holder.itemView.getResources().getIdentifier(
-                items.get(position).getPic(),
+                items.get(position).getImageUrl(),
                 "drawable",
                 holder.itemView.getContext().getPackageName());
 
@@ -64,9 +63,6 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHold
                 holder.itemView.getContext().startActivity(intent);
             }
         });
-
-
-
     }
 
     @Override
@@ -76,14 +72,14 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        TextView titleTxt, locationTxt, scoreTxt;
+        TextView placeNameTxt, locationTxt, categoryTxt;
         ImageView pic;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            titleTxt = itemView.findViewById(R.id.titleTxt);
+            placeNameTxt = itemView.findViewById(R.id.placeNameTxt);
             locationTxt = itemView.findViewById(R.id.locationTxt);
-            scoreTxt = itemView.findViewById(R.id.scoreTxt);
+            categoryTxt = itemView.findViewById(R.id.categoryTxt);
             
             pic = itemView.findViewById(R.id.picImg);
         }
