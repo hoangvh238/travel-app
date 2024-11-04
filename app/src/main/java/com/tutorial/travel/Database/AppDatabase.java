@@ -62,6 +62,8 @@ public abstract class AppDatabase extends RoomDatabase {
                 UserAccountDAO userDao = instance.userDAO();
                 userDao.insert(new UserAccount("admin", "Admin@123", "admin", "", "ADMIN"));
                 userDao.insert(new UserAccount("traveluser", "User@123", "traveluser", "", "USER"));
+                userDao.insert(new UserAccount("2", "2", "admin", "", "ADMIN"));
+                userDao.insert(new UserAccount("1", "1", "traveluser", "", "USER"));
             });
         }
     };

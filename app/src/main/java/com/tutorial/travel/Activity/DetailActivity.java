@@ -47,13 +47,22 @@ public class DetailActivity extends AppCompatActivity {
 
         Bitmap image = ImageHelpers.getImageFromStorage(this, item.getImageUrl());
         Glide.with(this)
-                .asBitmap() // Indicate that we are loading a Bitmap
+                .asBitmap()
                 .load(image)
                 .transform(new CenterCrop(), new GranularRoundedCorners(40, 40, 40, 40))
                 .into(picImg);
 
         backBtn.setOnClickListener(v -> {
             startActivity(new Intent(DetailActivity.this, MainActivity.class));
+        });
+
+        // Set up the discover button to open ARActivity
+        discoverBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(DetailActivity.this, ARActivity.class);
+            intent.putExtra("SOUND_NAME", "ad"); // Tên âm thanh bạn muốn truyền
+            intent.putExtra("GLB_FILE_LOCATION", "models/sofa.glb"); // Đường dẫn GLB bạn muốn truyền
+            startActivity(intent);
+            startActivity(intent);
         });
     }
 
