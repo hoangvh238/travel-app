@@ -137,8 +137,6 @@ public class CreatePopularActivity extends AppCompatActivity {
         String category = categorySpinner.getSelectedItem().toString();
         String detailedDescription = detailedDescriptionEditText.getText().toString();
 
-        // Show a Toast message as a placeholder for actual submission logic
-
         // Add actual submission logic here (e.g., sending data to a server or saving to a database)
         if(currentImage != null) {
             imageUrl = ImageHelpers.saveImageToLocal(currentImage, this);
