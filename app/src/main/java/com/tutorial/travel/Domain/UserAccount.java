@@ -6,17 +6,15 @@ import androidx.room.PrimaryKey;
 
 @Entity(tableName = "userAccounts")
 public class UserAccount {
-    @PrimaryKey
-    @NonNull
-    private String id;
+    @PrimaryKey(autoGenerate = true)
+    private int id;
     private String username;
     private String password;
     private String fullName;
     private String phoneNumber;
     private String role;
 
-    public UserAccount(@NonNull String id, String username, String password, String fullName, String phoneNumber, String role) {
-        this.id = id;
+    public UserAccount(String username, String password, String fullName, String phoneNumber, String role) {
         this.username = username;
         this.password = password;
         this.fullName = fullName;
@@ -25,11 +23,11 @@ public class UserAccount {
     }
 
     @NonNull
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(@NonNull String id) {
+    public void setId(@NonNull int id) {
         this.id = id;
     }
 

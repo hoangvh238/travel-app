@@ -16,7 +16,6 @@ import java.io.Serializable;
         ))
 public class PopularDomain implements Serializable {
     @PrimaryKey(autoGenerate = true)
-    @NonNull
     private int id;
     private String placeName;
     private String location;
@@ -25,12 +24,13 @@ public class PopularDomain implements Serializable {
     private String imageUrl;
     private int categoryId;
 
-    public PopularDomain(String placeName, String location, String shortDescription, String detailDescription, String imageUrl) {
+    public PopularDomain(String placeName, String location, String shortDescription, String detailDescription, String imageUrl, int categoryId) {
         this.placeName = placeName;
         this.location = location;
         this.shortDescription = shortDescription;
         this.detailDescription = detailDescription;
         this.imageUrl = imageUrl;
+        this.categoryId = categoryId;
     }
 
     @NonNull

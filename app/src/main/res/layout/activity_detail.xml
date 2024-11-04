@@ -100,105 +100,13 @@
                     app:srcCompat="@drawable/star2" />
 
                 <TextView
-                    android:id="@+id/scoreTxt"
+                    android:id="@+id/categoryTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:text="4.0"
                     android:textColor="@color/black" />
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="32dp"
-                android:orientation="horizontal">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginEnd="8dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/border_background">
-
-                    <ImageView
-                        android:id="@+id/imageView14"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/bed" />
-
-                    <TextView
-                        android:id="@+id/bedTxt"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:text="2 bed"
-                        app:layout_constraintBottom_toBottomOf="@+id/imageView14"
-                        app:layout_constraintStart_toEndOf="@+id/imageView14"
-                        app:layout_constraintTop_toTopOf="@+id/imageView14" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginEnd="8dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/border_background">
-
-                    <ImageView
-                        android:id="@+id/imageView14"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/guide" />
-
-                    <TextView
-                        android:id="@+id/guideTxt"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:text="Guide"
-                        app:layout_constraintBottom_toBottomOf="@+id/imageView14"
-                        app:layout_constraintStart_toEndOf="@+id/imageView14"
-                        app:layout_constraintTop_toTopOf="@+id/imageView14" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="0dp"
-                    android:layout_height="55dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/border_background">
-
-                    <ImageView
-                        android:id="@+id/imageView14"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/wifi" />
-
-                    <TextView
-                        android:id="@+id/wifiTxt"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:text="Wi-Fi"
-                        app:layout_constraintBottom_toBottomOf="@+id/imageView14"
-                        app:layout_constraintStart_toEndOf="@+id/imageView14"
-                        app:layout_constraintTop_toTopOf="@+id/imageView14" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
 
             <TextView
@@ -216,7 +124,7 @@
                 android:id="@+id/descriptionTxt"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@string/description"
+                android:text="description"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginStart="32dp"
@@ -232,28 +140,15 @@
                 android:layout_marginEnd="32dp"
                 android:orientation="horizontal">
 
-                <TextView
-
-                    android:id="@+id/priceTxt"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="clip_vertical"
-                    android:layout_weight="1"
-                    android:text="$1,200"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/black"
-                    android:textSize="34sp"
-                    android:textStyle="bold" />
-
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/button"
+                    android:id="@+id/discoverButton"
                     style="@android:style/Widget.Button"
                     android:layout_width="0dp"
                     android:layout_height="55dp"
                     android:layout_marginBottom="16dp"
                     android:layout_weight="1"
                     android:background="@drawable/intro_background"
-                    android:text="Book Now !"
+                    android:text="Discover Now !"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     android:textStyle="bold" />

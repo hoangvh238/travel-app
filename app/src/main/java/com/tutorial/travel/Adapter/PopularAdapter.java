@@ -14,18 +14,16 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.GranularRoundedCorners;
 import com.tutorial.travel.Activity.DetailActivity;
-import com.tutorial.travel.DAOs.PopularDAO;
-import com.tutorial.travel.Database.AppDatabase;
 import com.tutorial.travel.Domain.PopularDomain;
 import com.tutorial.travel.R;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHolder> {
-    ArrayList<PopularDomain> items;
+    List<PopularDomain> items;
     // DecimalFormat formatter;
 
-    public PopularAdapter(ArrayList<PopularDomain> items) {
+    public PopularAdapter(List<PopularDomain> items) {
         this.items = items;
         // formatter = new DecimalFormat("###,###,###,###");
     }
@@ -45,7 +43,7 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHold
     public void onBindViewHolder(@NonNull PopularAdapter.ViewHolder holder, int position) {
         holder.placeNameTxt.setText(items.get(position).getPlaceName());
         holder.locationTxt.setText(items.get(position).getLocation());
-        holder.categoryTxt.setText(""+items.get(position).getCategoryId());
+        holder.categoryTxt.setText(items.get(position).getCategoryId()+"");
 
         int drawableResourceId = holder.itemView.getResources().getIdentifier(
                 items.get(position).getImageUrl(),
@@ -65,9 +63,6 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHold
                 holder.itemView.getContext().startActivity(intent);
             }
         });
-
-
-
     }
 
     @Override

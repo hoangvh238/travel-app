@@ -14,6 +14,10 @@ public interface PopularCategoryDAO {
     @Insert
     void insertCategory(CategoryDomain category);
 
+    // Delete all categories
+    @Query("DELETE FROM popularCategories")
+    void deleteAll();
+
     // Get all data
     @Query("SELECT * FROM popularCategories")
     List<CategoryDomain> getAllCategories();

@@ -6,6 +6,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import com.tutorial.travel.Domain.CategoryDomain;
 import com.tutorial.travel.Domain.PopularDomain;
 
 import java.util.List;
@@ -34,4 +35,8 @@ public interface PopularDAO {
     // Get data by id
     @Query("SELECT * FROM populars WHERE id = :id")
     PopularDomain getPopularById(int id);
+
+    // Get category id by popular id
+    @Query("SELECT categoryId FROM populars WHERE id = :id")
+    int getCategoryIdById(int id);
 }

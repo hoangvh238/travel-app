@@ -16,7 +16,6 @@ import com.tutorial.travel.Domain.CategoryDomain;
 import com.tutorial.travel.Domain.PopularDomain;
 import com.tutorial.travel.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -30,17 +29,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         categoryDao = AppDatabase.getInstance(this).categoryDAO();
-
+        popularDAO = AppDatabase.getInstance(this).popularDAO();
         initRecyclerView();
     }
 
     private void initRecyclerView() {
-
         // For Popular RecyclerView
-        ArrayList<PopularDomain> items = new ArrayList<>();
-        String str = getString(R.string.description);
-        items.add(new PopularDomain("Miami Beach", "United State", "Mar caible avendia lago", "Mar caible avendia lago", "pic1"));
-        items.add(new PopularDomain("Hawaii Beach", "United State", "Passo Rolle, TN", "Passo Rolle, TN", "pic2"));
+            List<PopularDomain> items = popularDAO.getAllPopulars();
 
         recyclerViewPopular = findViewById(R.id.recyclerview1);
         recyclerViewPopular.setLayoutManager(new LinearLayoutManager(
