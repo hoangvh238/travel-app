@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerViewPopular, recyclerViewCategory;
     FloatingActionButton addButton;
     TextView userNameText;
+    UserAccount currentUser;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,15 +46,15 @@ public class MainActivity extends AppCompatActivity {
         popularDAO = AppDatabase.getInstance(this).popularDAO();
 
         initGeneralView();
-        UserAccount user = (UserAccount) getIntent().getSerializableExtra("user");
+        currentUser = (UserAccount) getIntent().getSerializableExtra("user");
         // set general information into view
-        if (user != null) {
-            if (user.getRole().equalsIgnoreCase("ADMIN")) {
+        if (currentUser != null) {
+            if (currentUser.getRole().equalsIgnoreCase("ADMIN")) {
                 addButton.setVisibility(View.VISIBLE);
             } else {
                 addButton.setVisibility(View.GONE);
             }
-            userNameText.setText(user.getFullName());
+            userNameText.setText(currentUser.getFullName());
         }
         initRecyclerView();
     }
@@ -98,9 +99,6 @@ public class MainActivity extends AppCompatActivity {
         if (item.getTitle().equals("Delete")) {
             // Perform the delete action here
             deletePopularByIndex(position);
-
-            // Notify success delete
-            Toast.makeText(this, "Delete popular successfully!", Toast.LENGTH_SHORT).show();
             return true;
         }
 
@@ -114,12 +112,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void deletePopularByIndex(int index){
-        List<PopularDomain> items = popularDAO.getAllPopulars();
-        PopularDomain popular = items.get(index);
-        popularDAO.delete(popular);
+        if (currentUser != null) {
+            if (currentUser.getRole().equalsIgnoreCase("ADMIN")) {
+                List<PopularDomain> items = popularDAO.getAllPopulars();
+                PopularDomain popular = items.get(index);
+                popularDAO.delete(popular);
+                // Notify success delete
+                Toast.makeText(this, "Delete popular successfully!", Toast.LENGTH_SHORT).show();
 
-        // Refresh after deleting
-        refreshPopulars();
+                // Refresh after deleting
+                refreshPopulars();
+            } else {
+                // Notify fail delete
+                Toast.makeText(this, "Only admin can delete popular!", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
     private void refreshPopulars() {

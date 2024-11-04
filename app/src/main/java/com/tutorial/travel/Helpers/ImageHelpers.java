@@ -32,9 +32,6 @@ public class ImageHelpers {
             outputStream.flush();
             outputStream.close();
 
-            // Image saved successfully
-            Toast.makeText(context, "Image saved to: " + imageFile.getAbsolutePath(), Toast.LENGTH_LONG).show();
-
             return fileName;
         } catch (IOException e) {
             e.printStackTrace();
