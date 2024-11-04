@@ -25,5 +25,13 @@ public interface PopularCategoryDAO {
     // Get data by id
     @Query("SELECT * FROM popularCategories WHERE categoryId = :id")
     CategoryDomain getCategoryById(int id);
+
+    // Get data by title
+    @Query("SELECT * FROM popularCategories WHERE title = :title")
+    CategoryDomain getCategoryByTitle(String title);
+
+    // Get all category names
+    @Query("SELECT title FROM popularCategories")
+    List<String> getCategoryNames();
 }
 

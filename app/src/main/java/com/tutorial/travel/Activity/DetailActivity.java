@@ -4,15 +4,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.GranularRoundedCorners;
 import com.tutorial.travel.DAOs.PopularCategoryDAO;
 import com.tutorial.travel.Database.AppDatabase;
 import com.tutorial.travel.Domain.CategoryDomain;
 import com.tutorial.travel.Domain.PopularDomain;
+import com.tutorial.travel.Helpers.ImageHelpers;
 import com.tutorial.travel.R;
 
 public class DetailActivity extends AppCompatActivity {
@@ -41,10 +45,11 @@ public class DetailActivity extends AppCompatActivity {
         CategoryDomain category = categoryDao.getCategoryById(item.getCategoryId());
         categoryTxt.setText(category.getTitle());
 
-        int drawableResourceId = getResources().getIdentifier(item.getImageUrl(), "drawable", getPackageName());
-
+        Bitmap image = ImageHelpers.getImageFromStorage(this, item.getImageUrl());
         Glide.with(this)
-                .load(drawableResourceId)
+                .asBitmap() // Indicate that we are loading a Bitmap
+                .load(image)
+                .transform(new CenterCrop(), new GranularRoundedCorners(40, 40, 40, 40))
                 .into(picImg);
 
         backBtn.setOnClickListener(v -> {

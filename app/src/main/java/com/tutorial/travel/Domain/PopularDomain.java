@@ -19,15 +19,13 @@ public class PopularDomain implements Serializable {
     private int id;
     private String placeName;
     private String location;
-    private String shortDescription;
     private String detailDescription;
     private String imageUrl;
     private int categoryId;
 
-    public PopularDomain(String placeName, String location, String shortDescription, String detailDescription, String imageUrl, int categoryId) {
+    public PopularDomain(String placeName, String location, String detailDescription, String imageUrl, int categoryId) {
         this.placeName = placeName;
         this.location = location;
-        this.shortDescription = shortDescription;
         this.detailDescription = detailDescription;
         this.imageUrl = imageUrl;
         this.categoryId = categoryId;
@@ -56,14 +54,6 @@ public class PopularDomain implements Serializable {
 
     public void setLocation(String location) {
         this.location = location;
-    }
-
-    public String getShortDescription() {
-        return shortDescription;
-    }
-
-    public void setShortDescription(String shortDescription) {
-        this.shortDescription = shortDescription;
     }
 
     public String getDetailDescription() {
