@@ -59,8 +59,7 @@ public class DetailActivity extends AppCompatActivity {
         // Set up the discover button to open ARActivity
         discoverBtn.setOnClickListener(v -> {
             Intent intent = new Intent(DetailActivity.this, ARActivity.class);
-            intent.putExtra("SOUND_NAME", "ad"); // Tên âm thanh bạn muốn truyền
-            intent.putExtra("GLB_FILE_LOCATION", "models/sofa.glb"); // Đường dẫn GLB bạn muốn truyền
+            intent.putExtra("SOUND_NAME", ""); // Tên âm thanh bạn muốn truyền
             startActivity(intent);
             startActivity(intent);
         });

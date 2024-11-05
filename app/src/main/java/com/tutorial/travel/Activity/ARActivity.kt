@@ -64,13 +64,13 @@ class ARActivity : AppCompatActivity() {
             rotateModel(15f) // Rotate the model by 15 degrees
         }
 
-        videoNode = VideoNode(sceneView.engine, scaleToUnits = 1f, centerOrigin = Position(y = -4f), glbFileLocation = "models/plane.glb", player = mediaPlayer, onLoaded = { _, _ ->
+        videoNode = VideoNode(sceneView.engine, scaleToUnits = 0.6f, centerOrigin = Position(y = -4f), glbFileLocation = "models/plane.glb", player = mediaPlayer, onLoaded = { _, _ ->
             mediaPlayer.start()
         })
 
         modelNode = ArModelNode(sceneView.engine, PlacementMode.INSTANT).apply {
             loadModelGlbAsync(
-                glbFileLocation = "models/taj_mahal_3d_model.glb",
+                glbFileLocation = "models/town.glb",
                 scaleToUnits = 1f,
                 centerOrigin = Position(-0.5f)
             ) {
@@ -93,7 +93,7 @@ class ARActivity : AppCompatActivity() {
 
     private fun scaleModel(scaleFactorChange: Float) {
         scaleFactor *= scaleFactorChange
-        scaleFactor = scaleFactor.coerceIn(0.1f, 5.0f) // Limit the scale factor
+        scaleFactor = scaleFactor.coerceIn(0.1f, 5000.0f) // Limit the scale factor
         modelNode.scale = Position(scaleFactor, scaleFactor, scaleFactor) // Apply scaling
     }
 
